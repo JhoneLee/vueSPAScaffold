@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config ./config/webpack.dev.config.js"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config ./config/webpack.dev.config.js",
+    "prod": "rm -rf ./dist && webpack --config ./config/webpack.prod.config.js"
   },
   "repository": {
     "type": "git",
@@ -18,22 +19,30 @@
   },
   "homepage": "https://github.com/JhoneLee/vueSPAScaffold#readme",
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
+    "less": "^3.0.4",
+    "url-search-params": "^0.10.0",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.5.16",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.1.6",
     "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
     "less-loader": "^4.1.0",
     "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",
-    "vue-loader": "^15.2.4",
+    "vue-loader": "^14.2.3",
+    "vue-style-loader": "^4.1.0",
     "webpack": "^4.10.2",
     "webpack-cli": "^3.0.2",
     "webpack-dev-server": "^3.1.4"

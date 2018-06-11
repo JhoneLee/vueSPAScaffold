@@ -1,27 +1,12 @@
 <template>
-  <div>
-    Clicked: {{ count }} times
-    <button @click="increment">+</button>
-    <button @click="decrement">-</button>
-    <button @click="incrementIfOdd">Increment if odd</button>
-    <button @click="incrementAsync">Increment async</button>
-  </div>
+    <div>
+        <keep-alive>
+            <router-view class="view"></router-view>
+        </keep-alive>
+    </div>
 </template>
-
 <script>
-  import * as actions from './actions';
-  export default {
-    vuex: {
-      getters: {
-        count: state => state.count
-      },
-        actions: actions
-    }
-  }
+    export default {
+        name: 'App'
+    };
 </script>
-
-<style lang="sass" scoped>
-  div {
-    background-color: #888;
-  }
-</style>

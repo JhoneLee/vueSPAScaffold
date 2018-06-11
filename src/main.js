@@ -2,50 +2,19 @@
 * @Author: liyunjiao
 * @Date:   2018-06-05 16:20:53
 * @Last Modified by:   liyunjiao
-* @Last Modified time: 2018-06-05 17:10:08
+* @Last Modified time: 2018-06-11 16:33:43
 */
 
 import Vue from "vue";
-import VueRouter from 'vue-router';
+import App from './App';
+import router from './routes';
+import store from './vuex/store';
 
-// 1. Use plugin.
-// This installs <router-view> and <router-link>,
-// and injects $router and $route to all router-enabled child components
-Vue.use(VueRouter)
-
-// 2. Define route components
-const Home = { template: '<div>home</div>' }
-const Foo = { template: '<div>foo sss</div>' }
-const Bar = { template: '<div>bar</div>' }
-
-// 3. Create the router
-const router = new VueRouter({
-  mode: 'history',
-  base: __dirname,
-  routes: [
-    { path: '/', component: Home },
-    { path: '/foo', component: Foo },
-    { path: '/bar', component: Bar }
-  ]
-})
-
-// 4. Create and mount root instance.
-// Make sure to inject the router.
-// Route components will be rendered inside <router-view>.
 new Vue({
-  router,
-  template: `
-    <div id="app">
-      <h1>Basic</h1>
-      <ul>
-        <li><router-link to="/">/</router-link></li>
-        <li><router-link to="/foo">/foo</router-link></li>
-        <li><router-link to="/bar">/bar</router-link></li>
-        <router-link tag="li" to="/bar" :event="['mousedown', 'touchstart']">
-          <a>/bar</a>
-        </router-link>
-      </ul>
-      <router-view class="view"></router-view>
-    </div>
-  `
-}).$mount('#app')
+    el:'#app',
+    router,
+    store,
+    render(h){
+        return h(App)
+    }
+});

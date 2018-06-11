@@ -2,7 +2,7 @@
 * @Author: liyunjiao
 * @Date:   2018-06-05 16:21:04
 * @Last Modified by:   liyunjiao
-* @Last Modified time: 2018-06-05 17:41:42
+* @Last Modified time: 2018-06-11 16:00:37
 */
 
 var webpack = require('webpack');
@@ -24,7 +24,8 @@ module.exports = {
                 loader: 'vue-loader',
                 options: {
                     loaders: {
-                        scss: 'vue-style-loader!css-loader!sass-loader'
+                        less: 'vue-style-loader!css-loader!less-loader',
+                        js:'babel-loader'
                     }
                 }
             },{
@@ -45,11 +46,14 @@ module.exports = {
             'vue$': 'vue/dist/vue.common.js',
             Components: path.resolve(__dirname, '../src/components/')
         },
-        extensions: ['.js', '.jsx', '.vue']
+        extensions: ['.js', '.vue','.less']
     },
     devServer: {
         historyApiFallback: true,
-        noInfo: true
+        //noInfo: true
+        inline: true,
+        port:4343,
+        host:'0.0.0.0'
     },
     performance: {
         hints: false
