@@ -1,26 +1,28 @@
 /*
 * @Author: liyunjiao
 * @Date:   2018-06-11 18:01:31
-* @Last Modified by:   liyunjiao
-* @Last Modified time: 2018-06-11 18:30:47
+* @Last Modified by:   liyunjiao2048@163.com
+* @Last Modified time: 2018-11-22 13:31:21
 */
 
 var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var htmlWebpackPlugin = require('html-webpack-plugin');
+// var VueLoaderPlugin = require('vue-loader/lib/plugin');  // vue-loader 升级15.x时配置
 module.exports = {
+    // devtool: 'cheap-module-source-map',
     mode:'production',
     entry: {
         main:'./src/main.js',
-        vendorVue: ['vue'],
-        vendorVuex:['vuex'],
-        vendorRouter:['vue-router']
+        // vendorVue: ['vue'],
+        // vendorVuex:['vuex'],
+        // vendorRouter:['vue-router']
     },
     output: {
         path: path.resolve(__dirname, '../dist'),
         publicPath: '',
-        filename: './[name].[hash:8].js'
+        filename: './[name].[chunkhash:8].js'
     },
     module: {
         rules: [
@@ -29,12 +31,12 @@ module.exports = {
                 loader: 'vue-loader',
                 options: {
                     extractCSS: true,
-                    loaders: {
-                        less: ExtractTextPlugin.extract({
-                            use:'css-loader!less-loader',
-                            fallback:'vue-style-loader'
-                        })
-                    }
+                    // loaders: {
+                    //     less: ExtractTextPlugin.extract({
+                    //         use:'css-loader!less-loader',
+                    //         fallback:'vue-style-loader'
+                    //     })
+                    // }
                 }
             },{
                 test: /\.js$/,
@@ -46,15 +48,24 @@ module.exports = {
                 options: {
                     name: '[name].[ext]?[hash]'
                 }
+            },{
+                test: /\.less$/,
+                use: [
+                  'vue-style-loader',
+                  'css-loader',
+                  'less-loader'
+                ]
             }
         ]
     },
     plugins:[
         new ExtractTextPlugin('less.css'),
+        // new VueLoaderPlugin(), // 同上
         new htmlWebpackPlugin({
             title: 'hehe',
             template: path.join(__dirname, '../index.html'),
-            filename: './index.html'
+            filename: './index.html',
+            chunks:['main']
         })
     ],
     resolve: {
@@ -64,8 +75,21 @@ module.exports = {
         },
         extensions: ['.js', '.vue','.less']
     },
+    optimization: {
+        // runtimeChunk: {
+        //     name: "manifest"
+        // },
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendor",
+                    chunks: "all"
+                }
+            }
+        }
+    },
     performance: {
         hints: false
-    },
-    devtool: '#eval-source-map'
+    }
 }

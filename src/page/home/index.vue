@@ -30,6 +30,10 @@ export default {
     },
     created(){
         console.log('实例已经创建完成之后被调用');
+        import('./asyncMod').then(res=>{
+            console.log(res.default);
+            res.default();
+        });
         this.fetchData({
             type:'HOME',
             api:'movies',
