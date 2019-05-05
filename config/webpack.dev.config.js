@@ -1,8 +1,8 @@
 /*
 * @Author: liyunjiao
 * @Date:   2018-06-05 16:21:04
-* @Last Modified by:   liyunjiao
-* @Last Modified time: 2018-06-11 16:00:37
+* @Last Modified by:   liyunjiao2048@163.com
+* @Last Modified time: 2019-05-05 15:00:01
 */
 
 var webpack = require('webpack');
@@ -44,7 +44,8 @@ module.exports = {
     resolve: {
         alias: {
             'vue$': 'vue/dist/vue.common.js',
-            Components: path.resolve(__dirname, '../src/components/')
+            Components: path.resolve(__dirname, '../src/components/'),
+            "@":path.resolve(__dirname,'../src')
         },
         extensions: ['.js', '.vue','.less']
     },

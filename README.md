@@ -17,6 +17,7 @@ npm install
 > * 完全的前后端分离
 > * 引入vuex 及 vue-router
 > * 使用 fetch 请求数据
+> * 增加jest单元测试
 ------
 ## 各项依赖版本
 
