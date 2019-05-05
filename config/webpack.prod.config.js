@@ -2,7 +2,7 @@
 * @Author: liyunjiao
 * @Date:   2018-06-11 18:01:31
 * @Last Modified by:   liyunjiao2048@163.com
-* @Last Modified time: 2018-11-22 13:31:21
+* @Last Modified time: 2018-11-23 14:55:11
 */
 
 var webpack = require('webpack');
@@ -11,7 +11,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var htmlWebpackPlugin = require('html-webpack-plugin');
 // var VueLoaderPlugin = require('vue-loader/lib/plugin');  // vue-loader 升级15.x时配置
 module.exports = {
-    // devtool: 'cheap-module-source-map',
+    devtool: false,
     mode:'production',
     entry: {
         main:'./src/main.js',

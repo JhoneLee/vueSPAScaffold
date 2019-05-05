@@ -1,6 +1,11 @@
 <template>
   <div>
-    <Title/>
+    <Title>
+        <div>不具名slot1</div>
+        <template slot="test">
+            <div name='test'>具名slot2</div>
+        </template>
+    </Title>
     <h1>我是首页</h1>
     <h2>嵌套路由跳转</h2>
     <router-link :to="{ name: 'children1'}">children1</router-link>

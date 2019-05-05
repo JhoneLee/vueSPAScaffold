@@ -21,6 +21,7 @@
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
     "less": "^3.0.4",
+    "superagent": "^4.0.0",
     "url-search-params": "^0.10.0",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",

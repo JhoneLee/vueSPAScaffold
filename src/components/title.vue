@@ -1,5 +1,9 @@
 <template>
-    <h1>我是title</h1>
+    <h1>
+        我是title
+        <slot></slot>
+        <slot name="test"></slot>
+    </h1>
 </template>
 <script>
     export default {
